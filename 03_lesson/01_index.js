@@ -12,6 +12,14 @@ if (Number.isNaN(num1 && num2) === false && arrOperator.includes(operator)) {
   alert("WARNING: You entered incorrect data")
 }
 
+// ============================ Another variant fot me, with use "!" ============================
+// if (!Number.isNaN(num1 && num2) && arrOperator.includes(operator)) {
+//   output = calc(operator, num1, num2)
+//   showMassageResult(num1, operator, num2, output)
+// } else {
+//   alert("WARNING: You entered incorrect data")
+// }
+
 function getOperator(action) {
   return prompt(`Select one operator: ${action}`)
 }
