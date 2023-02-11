@@ -50,7 +50,7 @@ function getTotalOperand(operand1, operand2) {
 //   return  x < 2 || x > 4 || isNaN(x)
 // }
 
-function getArrayOperand(X) {
+function getArrayOperand() {
   const arrOperand = []
 
   for (let i = 0; i < totalOperand; i++) {
