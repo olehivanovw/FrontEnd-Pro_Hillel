@@ -3,7 +3,7 @@ const MATH_OPERATOR_LIST = Object.keys(MATH_OPERATOR)
 
 const operator = getOperator(`${MATH_OPERATOR_LIST.join(', ')}`)
 const totalOperand = getTotalOperand(2, 4)
-const valueOperand = getArrayOperand([])
+const valueOperand = getArrayOperand()
 const calcValue = calc(operator, valueOperand)
 
 showMassageResult(valueOperand, operator, calcValue)
@@ -51,13 +51,14 @@ function getTotalOperand(operand1, operand2) {
 // }
 
 function getArrayOperand(X) {
-  let numOperand
-  let arrOperand = X
+  const arrOperand = []
 
   for (let i = 0; i < totalOperand; i++) {
+    let numOperand
+
     do {
       numOperand = prompt(`Enter the operand ${i + 1}:`)
-    } while (isNaN(numOperand) || numOperand === '')
+    } while (isNaN(numOperand) || numOperand.trim() === '')
 
     arrOperand.push(numOperand)
   }
