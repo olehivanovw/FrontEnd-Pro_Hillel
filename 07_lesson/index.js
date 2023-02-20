@@ -64,15 +64,9 @@ function getQuiz(quest) {
 
   for (const matter of quest) {
     if (matter.type === 'prompt') {
-      let promAnswer = prompt(matter.question)
-      if (promAnswer === matter.answer) {
-        resArray.push(10)
-      }
+      getPrompt(matter, resArray)
     } else {
-      let confAnswer = confirm(matter.question)
-      if (confAnswer === matter.answer) {
-        resArray.push(10)
-      }
+      getConfirm(matter, resArray)
     }
   }
 
@@ -81,4 +75,18 @@ function getQuiz(quest) {
   })
 
   alert(`Вы набрали: ${result} балов`)
+}
+
+function getPrompt(quest, res) {
+  let Answer = prompt(quest.question)
+  if (Answer === quest.answer) {
+    return res.push(10)
+  }
+}
+
+function getConfirm(quest, res) {
+  let Answer = confirm(quest.question)
+  if (Answer === quest.answer) {
+    return res.push(10)
+  }
 }
