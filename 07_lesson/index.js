@@ -77,16 +77,31 @@ function getQuiz(quest) {
   alert(`Вы набрали: ${result} балов`)
 }
 
-function getPrompt(quest, res) {
-  let Answer = prompt(quest.question)
-  if (Answer === quest.answer) {
+function getPrompt(userQuest, res) {
+  let Answer = prompt(userQuest.question)
+  if (Answer === userQuest.answer) {
     return res.push(10)
   }
 }
 
-function getConfirm(quest, res) {
-  let Answer = confirm(quest.question)
-  if (Answer === quest.answer) {
+function getConfirm(userQuest, res) {
+  let Answer = confirm(userQuest.question)
+  if (Answer === userQuest.answer) {
     return res.push(10)
   }
 }
+
+// ========================================== AFTER LESSON SOLUTION ==========================================
+// getQuiz(QUESTIONS)
+//
+// function getQuiz(quest) {
+//   let score = 0
+//
+//   for (const { question, answer, type } of quest) {
+//     if (type(question) === answer) {
+//       score += 10
+//     }
+//   }
+//
+//   alert(`Вы набрали: ${score} балов`)
+// }
