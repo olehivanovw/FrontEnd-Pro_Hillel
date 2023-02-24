@@ -5,17 +5,17 @@ function createCalculator(base = 0) {
   return {
     add: (item) => {
       if (!isNaN(item)) {
-        counts += Number(item)
+        counts += item
       }
     },
     sub: (item) => {
       if (!isNaN(item)) {
-        counts -= Number(item)
+        counts -= item
       }
     },
-    set: (value) => {
-      if (!isNaN(value)) {
-        counts = Number(value)
+    set: (item) => {
+      if (!isNaN(item)) {
+        counts = item
       }
     },
     get: () => {
