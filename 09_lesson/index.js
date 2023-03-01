@@ -1,5 +1,6 @@
 'use strict'
 function Calculator(base) {
+  this.base = base
   this.counts = base
 
   this.add = function (item) {
@@ -21,7 +22,7 @@ function Calculator(base) {
     return this.counts
   }
   this.reset = function () {
-    this.counts = base
+    this.counts = this.base
   }
 }
 
