@@ -16,11 +16,11 @@ class Student {
 }
 
 class Group {
-  #students
+  #students = []
 
-  constructor() {
-    this.#students = []
-  }
+  // constructor() {
+  //   this.#students = []
+  // }
 
   get students() {
     return this.#students
