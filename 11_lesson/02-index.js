@@ -7,9 +7,10 @@ Array.prototype.max = function () {
     }
   })
 
-  // return this.reduce((a, b) => a > b ? a : b); // arrow method
+  // return this.reduce((accum, num) => accum > num ? accum : num); // arrow method
 }
 
 const arr = [6, 5, 8, 7]
 
 console.log(arr.max())
+console.log([1, 8, 5, 9].max())
