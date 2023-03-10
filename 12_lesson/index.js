@@ -7,7 +7,7 @@ const li = document.createElement('li')
 btn.addEventListener('click', onBtnClick)
 
 function onBtnClick() {
-  if (isInputEmpty(input)) {
+  if (isInputNotEmpty(input)) {
     li.textContent = input.value
     ul.append(li)
   }
@@ -15,6 +15,6 @@ function onBtnClick() {
   input.value = ''
 }
 
-function isInputEmpty(n) {
+function isInputNotEmpty(n) {
   return n.value.trim() !== ''
 }
