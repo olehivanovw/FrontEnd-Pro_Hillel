@@ -8,6 +8,7 @@
   <script src="index.js" defer></script>
 </head>
 <body>
+<!--// ============================= Variant with literal template ============================= //-->
   <table>
     <tr>
       <th>Name</th>
@@ -15,19 +16,8 @@
       <th>Phone</th>
       <th>Action</th>
     </tr>
-    <tr>
-      <td>
-        <ul id="nameList"></ul>
-      </td>
-      <td>
-        <ul id="surnameList"></ul>
-      </td>
-      <td>
-        <ul id="phoneList"></ul>
-      </td>
-      <td></td>
-    </tr>
-    <tr>
+
+    <tr id="rowInput">
       <td>
         <input id="nameInput" type="text" placeholder="Enter name"/>
       </td>
@@ -43,8 +33,44 @@
     </tr>
   </table>
 
-  <script id="itemTemplate" type="template">
-    <li>{message}</li>
-  </script>
+<!--// ============================= Variant with template <script> and ul list in table ============================= //-->
+<!--  <table>-->
+<!--    <tr>-->
+<!--      <th>Name</th>-->
+<!--      <th>Surname</th>-->
+<!--      <th>Phone</th>-->
+<!--      <th>Action</th>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td>-->
+<!--        <ul id="nameList"></ul>-->
+<!--      </td>-->
+<!--      <td>-->
+<!--        <ul id="surnameList"></ul>-->
+<!--      </td>-->
+<!--      <td>-->
+<!--        <ul id="phoneList"></ul>-->
+<!--      </td>-->
+<!--      <td></td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td>-->
+<!--        <input id="nameInput" type="text" placeholder="Enter name"/>-->
+<!--      </td>-->
+<!--      <td>-->
+<!--        <input id="surnameInput" type="text" placeholder="Enter surname"/>-->
+<!--      </td>-->
+<!--      <td>-->
+<!--        <input id="phoneInput" type="text" placeholder="Enter phone"/>-->
+<!--      </td>-->
+<!--      <td>-->
+<!--        <button id="addButton">Add Contact</button>-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--  </table>-->
+
+<!--  <script id="itemTemplate" type="template">-->
+<!--    <li>{message}</li>-->
+<!--  </script>-->
 </body>
 </html>
