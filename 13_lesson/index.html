@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>Contacts</title>
+  <script src="index.js" defer></script>
+</head>
+<body>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Surname</th>
+      <th>Phone</th>
+      <th>Action</th>
+    </tr>
+    <tr>
+      <td>
+        <ul id="nameList"></ul>
+      </td>
+      <td>
+        <ul id="surnameList"></ul>
+      </td>
+      <td>
+        <ul id="phoneList"></ul>
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <input id="nameInput" type="text" placeholder="Enter name"/>
+      </td>
+      <td>
+        <input id="surnameInput" type="text" placeholder="Enter surname"/>
+      </td>
+      <td>
+        <input id="phoneInput" type="text" placeholder="Enter phone"/>
+      </td>
+      <td>
+        <button id="addButton">Add Contact</button>
+      </td>
+    </tr>
+  </table>
+
+  <script id="itemTemplate" type="template">
+    <li>{message}</li>
+  </script>
+</body>
+</html>
