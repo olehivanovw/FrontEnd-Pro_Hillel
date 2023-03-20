@@ -1,0 +1,18 @@
+.tabs-item-btn {
+  border: 2px solid goldenrod;
+}
+
+.btn-active {
+  background-color: gold;
+}
+
+.tabs-item-content {
+  background-color: gold;
+  width: 200px;
+  height: 50px;
+  display: none;
+}
+
+.content-active {
+  display: block;
+}
