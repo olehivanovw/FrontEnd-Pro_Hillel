@@ -31,19 +31,19 @@ class Slider {
 
   onRootElClick(e) {
     const target = e.target
-    const el = this.findEl(target)
-    let indexEl = this.sliderItems.indexOf(el)
+    const slideEl = this.findEl(target)
+    let indexEl = this.sliderItems.indexOf(target)
+    const activeEl = this.findActiveEl(this.rootEl)
 
-    if (!el) {
+    if (!slideEl) {
       return
     }
 
-    const activeEl = this.findActiveEl(this.rootEl)
-
     if(activeEl) {
-      this.close(indexEl)
+      this.closePreviousEl(indexEl)
     }
-    this.nextEl(indexEl)
+
+    this.nextActiveEl(indexEl)
   }
 
   findEl(el) {
@@ -54,11 +54,11 @@ class Slider {
     return el.querySelector('.' + Slider.CLASS_ITEM_ACTIVE)
   }
 
-  close(index) {
+  closePreviousEl(index) {
     this.sliderItems[index].classList.remove(Slider.CLASS_ITEM_ACTIVE)
   }
 
-  nextEl(index) {
+  nextActiveEl(index) {
     index++
     if (index >= this.sliderItems.length) {
       index = 0
