@@ -9,19 +9,28 @@ const todoForm = document.querySelector('#todoForm')
 todoForm.addEventListener('submit', onFormSubmit)
 todoUl.addEventListener('click', onListElementClick)
 
+TodoAPI.getList()
+  .then((list) => {
+    renderTodoList(list)
+  })
+  .catch(e => showError(e))
+
 function onFormSubmit(e) {
   e.preventDefault()
 
   const data = getData()
 
   if (!isValidData(data)) {
-    showError()
+    showError(new Error('You must enter correct data'))
     return
   }
 
-  renderData(data)
-
-  clearInput()
+  TodoAPI.create(data)
+    .then((newData) => {
+      renderData(newData)
+      clearInput()
+    })
+    .catch(e => showError(e))
 }
 
 function onListElementClick(e) {
@@ -33,19 +42,22 @@ function onListElementClick(e) {
   } else {
     changeBgColor(target)
   }
-
 }
 
 function getData() {
-  return { dataInput: todoForm.msgInput.value }
+  return { title: todoForm.msgInput.value }
 }
 
 function isValidData(data) {
-  return data.dataInput.trim() !== ''
+  return data.title.trim() !== ''
 }
 
-function showError() {
-  alert('You must enter correct data')
+function showError(error) {
+  alert(error.message)
+}
+
+function renderTodoList(list) {
+  todoUl.innerHTML = list.map(generateDataHtml).join('')
 }
 
 function renderData(data) {
@@ -57,7 +69,7 @@ function renderData(data) {
 function generateDataHtml(value) {
   return `
     <li class="listItem">
-      ${value.dataInput}
+      ${value.title}
       <button class="listDeleteBtn">Delete</button>
     </li>
   `
