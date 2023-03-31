@@ -1,8 +1,7 @@
 'use strict'
 const CLASS_DELETE_BTN = 'listDeleteBtn'
 const SELECTOR_LIST_ITEM = '.listItem'
-const COLOR_GREENYELLOW = 'greenyellow'
-const COLOR_WHITE = 'white'
+const CLASS_BACKGROUND_COLOR = 'listItem-background-green'
 const todoUl = document.querySelector('#todoList')
 const todoForm = document.querySelector('#todoForm')
 
@@ -35,12 +34,18 @@ function onFormSubmit(e) {
 
 function onListElementClick(e) {
   const target = e.target
-  const listEl = findListEl(target)
+  const listEl = findListBtn(target)
+  const idEl = findListElId(target)
 
   if (listEl) {
+    TodoAPI.delete(idEl)
+      .catch(e => showError(e))
     deleteItem(target)
   } else {
     changeBgColor(target)
+    const statusBgColor = target.classList.contains(CLASS_BACKGROUND_COLOR)
+    TodoAPI.update(idEl, statusBgColor)
+      .catch(e => showError(e))
   }
 }
 
@@ -67,8 +72,16 @@ function renderData(data) {
 }
 
 function generateDataHtml(value) {
+  if (value.done === true) {
+    return `
+    <li class="listItem listItem-background-green" id="${value.id}">
+      ${value.title}
+      <button class="listDeleteBtn">Delete</button>
+    </li>
+  `
+  }
   return `
-    <li class="listItem">
+    <li class="listItem" id="${value.id}">
       ${value.title}
       <button class="listDeleteBtn">Delete</button>
     </li>
@@ -79,8 +92,12 @@ function clearInput() {
   todoForm.reset()
 }
 
-function findListEl(el) {
+function findListBtn(el) {
   return el.classList.contains(CLASS_DELETE_BTN)
+}
+
+function findListElId(el) {
+  return el.closest(SELECTOR_LIST_ITEM).id
 }
 
 function deleteItem(el) {
@@ -88,9 +105,5 @@ function deleteItem(el) {
 }
 
 function changeBgColor(el) {
-  if (el.style.backgroundColor === COLOR_GREENYELLOW) {
-    el.style.backgroundColor = COLOR_WHITE
-  } else {
-    el.style.backgroundColor = COLOR_GREENYELLOW
-  }
+  el.classList.toggle(CLASS_BACKGROUND_COLOR)
 }

@@ -30,16 +30,35 @@ class TodoAPI {
   }
 
   static delete(id) {
-    return fetch(`TodoAPI.API/${id}`, {
+    return fetch(TodoAPI.API + '/' + id, {
       method: 'DELETE',
     })
-      // .then((res) => {
-      //   if (res.ok) {
-      //     return res.json()
-      //   }
-      //
-      //   throw new Error('Can not delete todo on server')
-      // })
+      .then((res) => {
+        if (res.ok) {
+          return res.json()
+        }
+
+        throw new Error('Can not delete todo on server')
+      })
+  }
+
+  static update(id, status) {
+    return fetch(TodoAPI.API + '/' + id, {
+      method: 'PUT',
+      body: JSON.stringify({
+        done: status,
+      }),
+      headers: {
+        'Content-type': 'application/json',
+      }
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json()
+        }
+
+        throw new Error('Can not update todo on server')
+      })
   }
 }
 
