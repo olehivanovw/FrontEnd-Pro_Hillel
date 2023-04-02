@@ -31,7 +31,7 @@ function onContactFormSubmit(e) {
       .then((newData) => {
         changeContact(data.id, newData)
         clearForm()
-        // contactList = contactList.map(contactItem => contactItem.id === data.id ? newData : contactItem)
+        contactList = contactList.map(contactItem => contactItem.id === data.id ? newData : contactItem)
       })
       .catch(e => showError(e))
   } else {
@@ -75,7 +75,7 @@ function deleteContactEl(el) {
     .catch(e => showError(e))
 
   el.remove()
-  // contactList = contactList.filter(contactItem => contactItem.id !== id)
+  contactList = contactList.filter(contactItem => contactItem.id !== id)
 }
 
 function editContactEl(el) {
@@ -111,7 +111,7 @@ function renderContactsList(data) {
   contactContainer.innerHTML = data.map(generateContactsHtml).join('')
 }
 
-function renderContacts(data) {
+function renderContacts(data) {ц
   const htmlItem = generateContactsHtml(data)
 
   contactContainer.insertAdjacentHTML('beforeend', htmlItem)
