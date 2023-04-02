@@ -113,7 +113,7 @@ function renderContactsList(data) {
   contactContainer.innerHTML = data.map(generateContactsHtml).join('')
 }
 
-function renderContacts(data) {ц
+function renderContacts(data) {
   const htmlItem = generateContactsHtml(data)
 
   contactContainer.insertAdjacentHTML('beforeend', htmlItem)
