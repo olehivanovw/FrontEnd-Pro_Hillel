@@ -1,4 +1,4 @@
-// 'use strict'
+'use strict'
 const SELECTOR_CONTACT_ROW = '.contactRow'
 const CLASS_DELETE_BTN = 'deleteBtn'
 const CLASS_EDIT_BTN = 'editBtn'
@@ -72,9 +72,11 @@ function deleteContactEl(el) {
   const id = getContactElId(el)
 
   ContactsAPI.deleteContact(id)
+    .then(() => {
+      el.remove()
+    })
     .catch(e => showError(e))
 
-  el.remove()
   contactList = contactList.filter(contactItem => contactItem.id !== id)
 }
 
