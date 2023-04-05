@@ -140,6 +140,7 @@ function generateContactsHtml(value) {
 
 function clearForm() {
   contactForm.reset()
+  contactForm.hiddenInput.value = ''
 }
 
 function getContactElId(el) {
