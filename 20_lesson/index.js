@@ -1,5 +1,5 @@
 'use strict'
-const SELECTOR_ALBUM_ELEMENT = '.albumEl'
+const SELECTOR_ALBUM_ELEMENT = '.albumElLink'
 const albumsContainer = document.querySelector('#albumsContainer')
 const photoContainer = document.querySelector('#photoContainer')
 let albumsList = []
@@ -10,13 +10,7 @@ GalleryAPI.getAlbums()
   .then((albums) => {
     renderAlbums(albums)
     albumsList = albums
-  })
-  .then(() => {
-    GalleryAPI.getPhotos(albumsList[0].id)
-      .then((photos) => {
-        renderPhotos(photos)
-      })
-      .catch((e) => showError(e))
+    showPhotos(albumsList[0])
   })
   .catch((e) => showError(e))
 
@@ -33,7 +27,7 @@ function renderAlbums(data) {
 
 function generateAlbumsHtml(value) {
   return `
-    <a href="#" class="albumEl" data-id="${value.id}">
+    <a href="#" class="albumElLink" id="${value.id}">
       ${value.title}
     </a>
   `
@@ -48,17 +42,11 @@ function findAlbumEl(el) {
 }
 
 function showPhotos(el) {
-  const id = getAlbumElId(el)
-
-  GalleryAPI.getPhotos(id)
+  GalleryAPI.getPhotos(el.id)
     .then((photos) => {
       renderPhotos(photos)
     })
     .catch((e) => showError(e))
-}
-
-function getAlbumElId(el) {
-  return el.dataset.id
 }
 
 function renderPhotos(data) {
