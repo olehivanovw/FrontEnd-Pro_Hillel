@@ -1,0 +1,28 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+}
+
+a {
+  display: block;
+}
+
+.container {
+  display: flex;
+  column-gap: 20px;
+}
+
+.albumsContainer {
+  width: 30%;
+}
+
+.photoContainer {
+  width: 70%;
+}
+
+.photo {
+  margin: 10px;
+}
