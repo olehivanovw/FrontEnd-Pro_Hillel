@@ -1,26 +1,22 @@
 class GalleryAPI {
-  static ALBUMS_URL = 'https://jsonplaceholder.typicode.com/albums'
-  static PHOTO_URL = 'https://jsonplaceholder.typicode.com/photos?albumId='
+  static API_URL = 'https://jsonplaceholder.typicode.com/'
+
+  static request(params, id, errorMessage) {
+    return fetch(GalleryAPI.API_URL + params + id)
+    .then((res) => {
+      if (res.ok) {
+        return res.json()
+      }
+
+      throw new Error(errorMessage)
+    })
+  }
 
   static getAlbums() {
-    return fetch(GalleryAPI.ALBUMS_URL)
-      .then((res) => {
-        if (res.ok) {
-          return res.json()
-        }
-
-        throw new Error('Can not retrieve albums from server')
-      })
+    return GalleryAPI.request('albums', '','Can not get albums from server')
   }
 
   static getPhotos(id) {
-    return fetch(GalleryAPI.PHOTO_URL + id)
-      .then((res) => {
-        if (res.ok) {
-          return res.json()
-        }
-
-        throw new Error('Can not retrieve photos from server')
-      })
+    return GalleryAPI.request('photos?albumId=', id, 'Can not get photos from server')
   }
 }
