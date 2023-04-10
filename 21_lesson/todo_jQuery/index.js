@@ -49,25 +49,6 @@ function onFormSubmit(e) {
   }
 }
 
-// function onListElementClick(e) {
-//   // const target = e.target
-//   // const listEl = findListEl(target)
-//   //
-//   // if(!listEl) {
-//   //   return
-//   // }
-//   //
-//   // if (isDeleteBtn(target)) {
-//   //   deleteItem(listEl)
-//   //   return
-//   // } else if (isEditBtn(target)) {
-//   //   editTodoEl(listEl)
-//   //   return
-//   // }
-//
-//   toggleDone(listEl)
-// }
-
 function getData() {
   const id = todoForm.hiddenInput.value
   const todo = findTodoById(id) || {}
