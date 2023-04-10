@@ -1,15 +1,17 @@
 'use strict'
 const SELECTOR_CONTACT_ROW = '.contactRow'
-const CLASS_DELETE_BTN = 'deleteBtn'
-const CLASS_EDIT_BTN = 'editBtn'
+const SELECTOR_DELETE_BTN = '.deleteBtn'
+const SELECTOR_EDIT_BTN = '.editBtn'
 const contactForm = document.querySelector('#contactForm')
-const contactContainer = document.querySelector('#contactContainer')
+const $contactContainer = $('#contactContainer')
 let contactList = []
 
 contactForm.addEventListener('submit', onContactFormSubmit)
-contactContainer.addEventListener('click', onContactContainerClick)
+$contactContainer
+  .on('click', SELECTOR_DELETE_BTN, deleteContactEl)
+  .on('click', SELECTOR_EDIT_BTN, editContactEl)
 
-ContactsAPI.getContacts()
+ContactAPI.getContacts()
   .then((contacts) => {
     renderContactsList(contacts)
     contactList = contacts
@@ -27,7 +29,7 @@ function onContactFormSubmit(e) {
   }
 
   if (data.id) {
-    ContactsAPI.updateContact(data.id, data)
+    ContactAPI.updateContact(data.id, data)
       .then((newData) => {
         changeContact(data.id, newData)
         clearForm()
@@ -35,7 +37,7 @@ function onContactFormSubmit(e) {
       })
       .catch(e => showError(e))
   } else {
-    ContactsAPI.createContact(data)
+    ContactAPI.createContact(data)
       .then((data) => {
         renderContacts(data)
         clearForm()
@@ -45,43 +47,28 @@ function onContactFormSubmit(e) {
   }
 }
 
-function onContactContainerClick(e) {
+function deleteContactEl(e) {
   const target = e.target
   const contactEl = findContactEl(target)
+  const id = getContactElId(contactEl)
 
-  if (isDeleteBtn(target)) {
-    deleteContactEl(contactEl)
-  } else if (isEditBtn(target)) {
-    editContactEl(contactEl)
-  }
-}
-
-function findContactEl(el) {
-  return el.closest(SELECTOR_CONTACT_ROW)
-}
-
-function isDeleteBtn(el) {
-  return el.classList.contains(CLASS_DELETE_BTN)
-}
-
-function isEditBtn(el) {
-  return el.classList.contains(CLASS_EDIT_BTN)
-}
-
-function deleteContactEl(el) {
-  const id = getContactElId(el)
-
-  ContactsAPI.deleteContact(id)
+  ContactAPI.deleteContact(id)
     .then(() => {
-      el.remove()
+      contactEl.remove()
     })
     .catch(e => showError(e))
 
   contactList = contactList.filter(contactItem => contactItem.id !== id)
 }
 
-function editContactEl(el) {
-  const id = getContactElId(el)
+function findContactEl(el) {
+  return el.closest(SELECTOR_CONTACT_ROW)
+}
+
+function editContactEl(e) {
+  const target = e.target
+  const contactEl = findContactEl(target)
+  const id = getContactElId(contactEl)
   const contact = findContactById(id)
 
   fillForm(contact)
@@ -110,13 +97,15 @@ function showError(error) {
 }
 
 function renderContactsList(data) {
-  contactContainer.innerHTML = data.map(generateContactsHtml).join('')
+  const html = data.map(generateContactsHtml)
+
+  $contactContainer.html(html)
 }
 
 function renderContacts(data) {
   const htmlItem = generateContactsHtml(data)
 
-  contactContainer.insertAdjacentHTML('beforeend', htmlItem)
+  $contactContainer.append(htmlItem)
 }
 
 function changeContact(id, data) {
