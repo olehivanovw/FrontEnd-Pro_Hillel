@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>Contacts + Server</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="ContactsAPI.js" defer></script>
+  <script src="index.js" defer></script>
+</head>
+<body>
+
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Surname</th>
+      <th>Phone</th>
+      <th>Action</th>
+    </tr>
+
+    <tbody id="contactContainer"></tbody>
+  </table>
+
+  <form id="contactForm">
+    <input id="hiddenInput" type="hidden">
+    <input id="nameInput" type="text" placeholder="Enter name"/>
+    <input id="surnameInput" type="text" placeholder="Enter surname"/>
+    <input id="phoneInput" type="text" placeholder="Enter phone"/>
+    <button id="addButton">Save Contact</button>
+  </form>
+
+</body>
+</html>
