@@ -2,6 +2,7 @@ const { src, dest, series, parallel, watch } = require('gulp')
 const concat = require('gulp-concat')
 const clean = require('gulp-clean')
 const uglify = require('gulp-uglify')
+const cleanCSS = require('gulp-clean-css')
 const sourcemaps = require('gulp-sourcemaps')
 const browserSync = require('browser-sync').create()
 const { path } = require('./gulp/path.js')
@@ -52,6 +53,9 @@ function copyJsVendorTask() {
 function copyCssTask() {
   return src(path.srcCss)
     .pipe(concat(path.distCss))
+    .pipe(sourcemaps.init())
+    .pipe(cleanCSS())
+    .pipe(sourcemaps.write('./'))
     .pipe(dest(path.dist))
 }
 
