@@ -1,16 +1,24 @@
 class Chat {
   constructor(param) {
+    this.ws = new WebSocket('ws://localhost:8080')
     this.param = param
+    this.init()
   }
 
-  #ws = new WebSocket('ws://localhost:8080')
+  init () {
+    this.ws.onopen = () => { console.log('Connection was started') }
+
+    this.ws.onclose = () => { console.log('Connection was stopped') }
+
+    this.ws.onerror = (error) => { console.log(`Connection was interrupted, ${error.message}`) }
+  }
 
   send (data) {
-    return this.#ws.send(JSON.stringify(data))
+    this.ws.send(JSON.stringify(data))
   }
 
   onMessage () {
-    return this.#ws.onmessage = (e) => {
+    this.ws.onmessage = (e) => {
       try {
         const data = JSON.parse(e.data)
         this.param.showMessage(data)
@@ -18,17 +26,5 @@ class Chat {
         console.error(`Can not parse this data, error: ${error.message}`)
       }
     }
-  }
-
-  onOpen () {
-    return this.#ws.onopen = () => { console.log('Connection was started') }
-  }
-
-  onClose () {
-    return this.#ws.onclose = () => { console.log('Connection was stopped') }
-  }
-
-  onError () {
-    return this.#ws.onerror = (error) => { console.log(`Connection was interrupted, ${error.message}`) }
   }
 }

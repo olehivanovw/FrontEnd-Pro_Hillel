@@ -52,9 +52,3 @@ function generateMessageHtml(value) {
   return `<li>${value.name}: ${value.message}</li>`
 }
 
-chat.onOpen()
-
-chat.onClose()
-
-chat.onError()
-
