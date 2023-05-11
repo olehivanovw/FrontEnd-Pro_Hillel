@@ -1,0 +1,51 @@
+.App {
+  margin: 20px 10px 0 10px;
+}
+
+.App_header  {
+  padding: 0 50px 0 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.App_header-icon {
+  max-width: 100px;
+}
+
+.App_header_form {
+  display: flex;
+  justify-content: space-between;
+  min-width: 700px;
+}
+
+.App_header_form-input {
+  min-width: 500px;
+}
+
+.App_wrapper {
+  display: flex;
+}
+
+.wrapper_nav {
+  margin-right: 100px;
+}
+
+.wrapper_nav_list {
+  list-style: none;
+}
+
+.wrapper_nav_list-item {
+  padding: 5px 0 5px 0;
+  cursor: pointer;
+}
+
+.wrapper_main {
+  padding-right: 50px;
+}
+
+.wrapper_main_heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
