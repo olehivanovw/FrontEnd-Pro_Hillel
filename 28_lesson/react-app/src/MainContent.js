@@ -1,4 +1,4 @@
-export default function Main_content() {
+export default function MainContent() {
   return (
     <main className='wrapper_main'>
       <div className='wrapper_main_heading'>
