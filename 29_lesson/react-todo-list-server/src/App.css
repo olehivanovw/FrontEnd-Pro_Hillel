@@ -1,0 +1,24 @@
+.App {
+  text-align: center;
+}
+
+.btn {
+  margin-right: 5px;
+}
+
+.labelText {
+  margin-right: 10px;
+}
+
+.todoList {
+  list-style: none;
+  padding-left: 0;
+}
+
+.todoItem {
+  margin-bottom: 5px;
+}
+
+.todoItem-text {
+ margin-right: 10px;
+}
