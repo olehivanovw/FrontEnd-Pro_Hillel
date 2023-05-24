@@ -1,6 +1,6 @@
 import {useState, useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {create, edit} from "../store/actions/todoAction";
+import {create, edit, update} from "../store/actions/todoAction";
 
 export default function Header () {
   const todoEdit = useSelector(state => state.todo.todoEdit)
@@ -22,7 +22,7 @@ export default function Header () {
     }
 
     if (todoTitle.id) {
-      dispatch(edit(todoTitle))
+      dispatch(update(todoTitle))
       dispatch(edit({}))
     } else {
       dispatch(create(todoTitle))

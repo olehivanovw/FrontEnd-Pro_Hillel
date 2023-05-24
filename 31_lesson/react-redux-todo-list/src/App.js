@@ -3,7 +3,7 @@ import Todo from "./components/Todo";
 import Footer from "./components/Footer";
 import './App.css';
 import {useDispatch, useSelector} from "react-redux";
-import {create, edit, remove} from "./store/actions/todoAction";
+import {create, edit, remove, update} from "./store/actions/todoAction";
 
 function App() {
   const listInit = useSelector(state => state.todo.list)
@@ -12,7 +12,7 @@ function App() {
 
   function onTodoSubmit(todo) {
     if (todo.id) {
-      dispatch(edit(todo))
+      dispatch(update(todo))
       dispatch(edit({}))
     } else {
       dispatch(create(todo))
