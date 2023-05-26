@@ -1,0 +1,30 @@
+.App {
+  text-align: center;
+}
+
+.btn {
+  margin-right: 5px;
+}
+
+.labelText {
+  margin-right: 10px;
+}
+
+.todoList {
+  list-style: none;
+  padding-left: 0;
+}
+
+.todoItem {
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+.todoItem-done {
+  color: green;
+  text-decoration: line-through;
+}
+
+.todoItem-text {
+ margin-right: 10px;
+}
