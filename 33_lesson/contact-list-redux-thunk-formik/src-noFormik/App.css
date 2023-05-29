@@ -1,0 +1,30 @@
+.App {
+  text-align: center;
+}
+
+.btn {
+  margin-right: 5px;
+}
+
+.labelText {
+  margin-right: 10px;
+}
+
+.contactList {
+  list-style: none;
+  padding-left: 0;
+}
+
+.contactItem {
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+.contactItem-done {
+  color: green;
+  text-decoration: line-through;
+}
+
+.contactItem-text {
+ margin-right: 10px;
+}
