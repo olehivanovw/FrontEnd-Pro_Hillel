@@ -1,13 +1,15 @@
-// import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 // import { getAlbumPhotos } from "../../store/action/userAction";
 import { useNavigate } from "react-router-dom";
+import { albumItem } from "../../store/action/userAction";
 
 export default function AlbumItem ({ album }) {
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch()
   const navigate = useNavigate()
 
   function onPhotoBtnClick() {
     // dispatch(getAlbumPhotos(album))
+    dispatch(albumItem(album))
     navigate(`/photo/${album.id}`)
   }
 

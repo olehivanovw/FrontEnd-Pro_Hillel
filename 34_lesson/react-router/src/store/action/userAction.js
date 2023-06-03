@@ -3,6 +3,7 @@ import UserAPI from "../../api/UserAPI";
 export const ACTION_SET_LIST = 'ACTION_SET_LIST'
 export const ACTION_USER_ALBUM = 'ACTION_USER_ALBUM'
 export const ACTION_ALBUM_PHOTO = 'ACTION_ALBUM_PHOTO'
+export const ACTION_ALBUM_ITEM = 'ACTION_ALBUM_ITEM'
 
 export function setList (list) {
   return { type: ACTION_SET_LIST, payload: list }
@@ -14,6 +15,10 @@ export function userAlbum (album) {
 
 export function albumPhoto (photo) {
   return { type: ACTION_ALBUM_PHOTO, payload: photo }
+}
+
+export function albumItem (album) {
+  return { type: ACTION_ALBUM_ITEM, payload: album }
 }
 
 export function getServerUsers () {

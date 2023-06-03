@@ -8,6 +8,7 @@ export default function Photo() {
   const dispatch = useDispatch()
   let { id } = useParams();
   const photoInit = useSelector(state => state.user.photo)
+  const albumsItem = useSelector(state => state.user.albumsItem)
 
   useEffect(() => {
     if (id) {
@@ -24,7 +25,7 @@ export default function Photo() {
 
   return (
     <div>
-      <Link to={`/albums/${id}`} className='navigation'><button>BACK TO ALBUM LIST</button></Link>
+      <Link to={`/albums/${albumsItem.userId}`} className='navigation'><button>BACK TO ALBUM LIST</button></Link>
       {photoList}
     </div>
   )
