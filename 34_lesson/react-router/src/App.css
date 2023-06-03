@@ -1,0 +1,29 @@
+.App {
+  text-align: center;
+}
+
+.navigation {
+  display: block;
+  margin: 20px 0;
+}
+
+.list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.item {
+  margin-bottom: 10px;
+}
+
+.item-text {
+  margin-right: 10px;
+}
+
+.item-btn {
+  display: inline-block;
+}
+
+.img {
+  padding: 5px;
+}
