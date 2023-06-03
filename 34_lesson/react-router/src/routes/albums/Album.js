@@ -3,17 +3,18 @@ import AlbumItem from "./AlbumItem";
 import { Link, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { getUserAlbums } from "../../store/action/userAction";
+import { selectAlbum } from "../../selectors/gallery";
 
 export default function Album() {
   const dispatch = useDispatch()
-  let { id } = useParams();
-  const albumsInit = useSelector(state => state.user.album)
+  let { idUser } = useParams();
+  const albumsInit = useSelector(selectAlbum)
 
   useEffect(() => {
-    if (id) {
-      dispatch(getUserAlbums(id))
+    if (idUser) {
+      dispatch(getUserAlbums(idUser))
     }
-  }, [dispatch, id])
+  }, [dispatch, idUser])
 
   const albumList = albumsInit.map(album => (
     <AlbumItem

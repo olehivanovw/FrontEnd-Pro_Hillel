@@ -1,14 +1,10 @@
-// import { useDispatch } from "react-redux";
-// import { getUserAlbums } from "../../store/action/userAction";
 import { useNavigate } from 'react-router-dom'
 
 export default function UserItem ({ user }) {
-  // const dispatch = useDispatch()
   const navigate = useNavigate()
 
   function onAlbumsBtnClick() {
-    // dispatch(getUserAlbums(user))
-    navigate(`/albums/${user.id}`)
+    navigate(`users/${user.id}/albums/`)
   }
 
   return (

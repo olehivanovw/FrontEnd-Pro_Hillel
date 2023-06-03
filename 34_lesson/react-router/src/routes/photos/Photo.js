@@ -3,18 +3,18 @@ import { Link, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { getAlbumPhotos } from "../../store/action/userAction";
 import PhotoItem from "./PhotoItem";
+import { selectPhoto } from "../../selectors/gallery";
 
 export default function Photo() {
   const dispatch = useDispatch()
-  let { id } = useParams();
-  const photoInit = useSelector(state => state.user.photo)
-  const albumsItem = useSelector(state => state.user.albumsItem)
+  let { idUser, idAlbum } = useParams();
+  const photoInit = useSelector(selectPhoto)
 
   useEffect(() => {
-    if (id) {
-      dispatch(getAlbumPhotos(id))
+    if (idAlbum) {
+      dispatch(getAlbumPhotos(idAlbum))
     }
-  }, [dispatch, id])
+  }, [dispatch, idAlbum])
 
   const photoList = photoInit.map(photo => (
     <PhotoItem
@@ -25,7 +25,7 @@ export default function Photo() {
 
   return (
     <div>
-      <Link to={`/albums/${albumsItem.userId}`} className='navigation'><button>BACK TO ALBUM LIST</button></Link>
+      <Link to={`/users/${idUser}/albums`} className='navigation'><button>BACK TO ALBUM LIST</button></Link>
       {photoList}
     </div>
   )
