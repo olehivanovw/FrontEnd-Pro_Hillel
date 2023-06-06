@@ -1,0 +1,35 @@
+.App {
+  text-align: center;
+}
+
+.header {
+  height: 64px;
+  line-height: 64px;
+  background-color: #ffffff;
+}
+
+.content {
+  padding: 20px 0 20px 0;
+  text-align: center;
+  background-color: #ffffff;
+  min-height: 120px;
+  line-height: 32px;
+}
+
+.footer {
+  padding: 20px 0 20px 0;
+  text-align: center;
+  background-color: #ffffff;
+}
+
+.btn-container {
+  padding-top: 10px;
+}
+
+.table {
+  margin-top: 20px;
+}
+
+.form {
+  justify-content: center;
+}

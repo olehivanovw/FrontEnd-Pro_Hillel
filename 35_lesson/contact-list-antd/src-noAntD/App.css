@@ -1,0 +1,51 @@
+.App {
+  text-align: center;
+}
+
+.active {
+  font-weight: bold;
+  color: blue;
+}
+
+.navigation {
+  margin-bottom: 20px;
+}
+
+.btn {
+  margin-right: 5px;
+}
+
+.labelText {
+  margin-right: 10px;
+}
+
+.contactList {
+  list-style: none;
+  padding-left: 0;
+}
+
+.contactItem {
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+.contactItem-done {
+  color: green;
+  text-decoration: line-through;
+}
+
+.contactItem-text {
+ margin-right: 10px;
+}
+
+.error {
+  color: red;
+  margin: 0 10px 0 10px;
+}
+
+.form {
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
