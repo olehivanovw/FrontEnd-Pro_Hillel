@@ -1,0 +1,1 @@
+export const selectTableList = state => state.table.listTable

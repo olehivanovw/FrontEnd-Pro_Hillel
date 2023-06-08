@@ -1,0 +1,29 @@
+.header {
+  height: 64px;
+  line-height: 64px;
+  background-color: #ffffff;
+}
+
+.content {
+  padding: 20px 0 20px 0;
+  text-align: center;
+  background-color: #ffffff;
+  min-height: 120px;
+  line-height: 32px;
+}
+
+.footer {
+  padding: 20px 0 20px 0;
+  text-align: center;
+  background-color: #ffffff;
+}
+
+.btn-add {
+  margin-bottom: 20px;
+}
+
+.card {
+  min-width: 300px;
+  margin: 5px;
+}
+
