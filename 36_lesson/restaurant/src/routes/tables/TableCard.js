@@ -1,9 +1,10 @@
-import { Button, Card, Space } from "antd";
+import { Button } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { selectTableList } from "../../selectors";
 import { useEffect } from "react";
 import { getServerTables } from "../../store/actions/tableAction";
 import { Link } from "react-router-dom";
+import TableCardItem from "./TableCardItem";
 
 export default function TableCard () {
   const listInit = useSelector(selectTableList)
@@ -13,26 +14,11 @@ export default function TableCard () {
     dispatch(getServerTables())
   }, [dispatch])
 
-  function onEditBtnClick() {
-    console.log('WORK EDIT')
-  }
-
-  function onDeleteBtnClick() {
-    console.log('WORK DELETE')
-  }
-
   const tableListCard = listInit.map(table => (
-    <Space key={table.id} size={16}>
-      <Card
-        title={`TABLE № ${table.number}`}
-        className='card'
-      >
-        <Space wrap>
-          <Button onClick={onEditBtnClick}>Edit</Button>
-          <Button danger onClick={onDeleteBtnClick}>Delete</Button>
-        </Space>
-      </Card>
-    </Space>
+    <TableCardItem
+      key={table.id}
+      table={table}
+    />
   ))
 
   return (

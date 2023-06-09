@@ -22,6 +22,10 @@ export default class TableAPI {
     return TableAPI.request('','GET','','Can not retrieve from server')
   }
 
+  static getOneTable(id) {
+    return TableAPI.request(id,'GET','','Can not retrieve from server')
+  }
+
   static createTable(data) {
     return TableAPI.request('', 'POST', data, 'Can not create on server')
   }
