@@ -15,7 +15,7 @@
 .footer {
   padding: 20px 0 20px 0;
   text-align: center;
-  background-color: #ffffff;
+  background-color: rgb(255, 255, 255);
 }
 
 .btn-add {
@@ -33,5 +33,9 @@
 
 .card-block-btn {
   margin-top: 20px;
+}
+
+.input {
+  min-width: 400px;
 }
 

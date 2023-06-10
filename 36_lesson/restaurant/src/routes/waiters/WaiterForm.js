@@ -3,7 +3,7 @@ import { selectWaiterEdit } from "../../selectors";
 import { useNavigate, useParams } from "react-router-dom";
 import { getServerOneWaiter, saveWaiter } from "../../store/actions/waiterAction";
 import { Button, Form, Input, Typography } from "antd";
-import { FormOutlined, LoadingOutlined } from "@ant-design/icons";
+import { LoadingOutlined, PhoneOutlined, UserOutlined } from "@ant-design/icons";
 import { useEffect } from "react";
 
 export default function WaiterForm() {
@@ -57,11 +57,11 @@ export default function WaiterForm() {
           },
           {
             required: true,
-            message: 'Please input your name!',
+            message: 'Please input waiter name!',
           },
         ]}
       >
-        <Input prefix={<FormOutlined />} placeholder="Enter waiter name" />
+        <Input prefix={<UserOutlined />} placeholder="Enter waiter name" />
       </Form.Item>
 
       <Form.Item
@@ -77,7 +77,7 @@ export default function WaiterForm() {
           },
         ]}
       >
-        <Input prefix={<FormOutlined />} placeholder="Enter waiter phone" />
+        <Input prefix={<PhoneOutlined />} placeholder="Enter waiter phone" />
       </Form.Item>
 
       <Form.Item>

@@ -66,7 +66,7 @@ export function getServerOneTable(id) {
   }
 }
 
-export function removeTable (table) {
+export function removeTable(table) {
   return (dispatch) => {
     TableAPI.deleteTable(table.id)
       .then(() => {

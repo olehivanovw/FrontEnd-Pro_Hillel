@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { CoffeeOutlined, HomeOutlined, ShopOutlined, UserOutlined } from "@ant-design/icons";
+import { CoffeeOutlined, HomeOutlined, ShopOutlined, TeamOutlined } from "@ant-design/icons";
 
 export const menu = [
   {
@@ -15,7 +15,7 @@ export const menu = [
   {
     label: <NavLink to='/waiters'>Waiters</NavLink>,
     key: 'waiters',
-    icon: <UserOutlined />,
+    icon: <TeamOutlined />,
   },
   {
     label: <NavLink to='/dishes'>Dishes</NavLink>,

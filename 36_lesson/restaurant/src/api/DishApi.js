@@ -22,6 +22,10 @@ export default class DishAPI {
     return DishAPI.request('','GET','','Can not retrieve from server')
   }
 
+  static getOneDish(id) {
+    return DishAPI.request(id,'GET','','Can not retrieve from server')
+  }
+
   static createDish(data) {
     return DishAPI.request('', 'POST', data, 'Can not create on server')
   }

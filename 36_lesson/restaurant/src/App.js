@@ -4,7 +4,7 @@ import NotFound from "./routes/NotFound";
 import Order from "./routes/orders/Order";
 import TableRoutes from "./routes/tables/TableRoutes";
 import WaiterRoutes from "./routes/waiters/WaiterRoutes";
-import Dish from "./routes/dishes/Dish";
+import DishRoutes from "./routes/dishes/DishRoutes";
 import { menu } from "./menu";
 import './App.css';
 
@@ -19,7 +19,7 @@ function App() {
           <Route path='/' element={<Order />} />
           <Route path='/tables/*' element={<TableRoutes />} />
           <Route path='/waiters/*' element={<WaiterRoutes />} />
-          <Route path='/dishes/*' element={<Dish />} />
+          <Route path='/dishes/*' element={<DishRoutes />} />
           <Route path='/*' element={<NotFound />} />
         </Routes>
       </Layout.Content>
