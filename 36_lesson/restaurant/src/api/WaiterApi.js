@@ -22,6 +22,10 @@ export default class WaiterAPI {
     return WaiterAPI.request('','GET','','Can not retrieve from server')
   }
 
+  static getOneWaiter(id) {
+    return WaiterAPI.request(id,'GET','','Can not retrieve from server')
+  }
+
   static createWaiter(data) {
     return WaiterAPI.request('', 'POST', data, 'Can not create on server')
   }

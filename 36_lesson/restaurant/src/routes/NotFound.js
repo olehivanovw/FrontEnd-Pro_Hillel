@@ -1,11 +1,10 @@
 import { Typography } from "antd";
 
 export default function NotFound () {
-  const { Title } = Typography;
   return (
     <div>
-      <Title type="danger">Page Not Found</Title>
-      <Title type="danger">404</Title>
+      <Typography.Title type="danger">Page Not Found</Typography.Title>
+      <Typography.Title type="danger">404</Typography.Title>
     </div>
   )
 }
