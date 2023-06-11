@@ -7,7 +7,7 @@ export const ACTION_UPDATE_TABLE = 'ACTION_UPDATE_TABLE'
 export const ACTION_EDIT_TABLE = 'ACTION_EDIT_TABLE'
 export const ACTION_CLEAR_EDIT_TABLE = 'ACTION_CLEAR_EDIT_TABLE'
 
-export function setList(list) {
+export function setListTable(list) {
   return { type: ACTION_SET_LIST_TABLE, payload: list }
 }
 
@@ -52,7 +52,7 @@ export function getServerTables() {
   return (dispatch) => {
     TableAPI.getTable()
       .then((newList) => {
-        dispatch(setList(newList))
+        dispatch(setListTable(newList))
       })
   }
 }

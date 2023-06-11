@@ -7,7 +7,7 @@ export const ACTION_UPDATE_WAITER = 'ACTION_UPDATE_WAITER'
 export const ACTION_EDIT_WAITER = 'ACTION_EDIT_WAITER'
 export const ACTION_CLEAR_EDIT_WAITER = 'ACTION_CLEAR_EDIT_WAITER'
 
-export function setList(list) {
+export function setListWaiter(list) {
   return { type: ACTION_SET_LIST_WAITER, payload: list }
 }
 
@@ -52,7 +52,7 @@ export function getServerWaiters() {
   return (dispatch) => {
     WaiterAPI.getWaiter()
       .then((newList) => {
-        dispatch(setList(newList))
+        dispatch(setListWaiter(newList))
       })
   }
 }

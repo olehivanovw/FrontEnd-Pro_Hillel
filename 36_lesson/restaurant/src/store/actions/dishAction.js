@@ -7,7 +7,7 @@ export const ACTION_UPDATE_DISH = 'ACTION_UPDATE_DISH'
 export const ACTION_EDIT_DISH = 'ACTION_EDIT_DISH'
 export const ACTION_CLEAR_EDIT_DISH = 'ACTION_CLEAR_EDIT_DISH'
 
-export function setList(list) {
+export function setListDish(list) {
   return { type: ACTION_SET_LIST_DISH, payload: list }
 }
 
@@ -52,7 +52,7 @@ export function getServerDishes() {
   return (dispatch) => {
     DishAPI.getDish()
       .then((newList) => {
-        dispatch(setList(newList))
+        dispatch(setListDish(newList))
       })
   }
 }

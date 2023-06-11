@@ -39,3 +39,7 @@
   min-width: 400px;
 }
 
+.select {
+  min-width: 240px;
+  max-width: 600px;
+}
