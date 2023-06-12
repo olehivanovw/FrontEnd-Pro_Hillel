@@ -3,7 +3,6 @@ import { clearEditOrder } from "../../store/actions/orderAction";
 
 export default function getColumnsOrder(dispatch, navigate) {
   function onEditBtnClick(order) {
-    console.log('WORK EDIT')
     dispatch(clearEditOrder())
     navigate(`${order.id}/edit`)
   }
@@ -14,7 +13,7 @@ export default function getColumnsOrder(dispatch, navigate) {
 
   return [
     {
-      title: 'Id',
+      title: '№',
       dataIndex: 'id',
       key: 'id',
     },

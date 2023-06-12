@@ -1,10 +1,10 @@
-import { Button, Form, Select, Space, Typography } from "antd";
+import { Button, Form, Input, Select, Space, Typography } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { selectCommonOptions, selectOrderEdit } from "../../selectors";
 import { getServerOneOrder, saveOrder } from "../../store/actions/orderAction";
 import { useEffect } from "react";
-import { LoadingOutlined } from "@ant-design/icons";
+import { LoadingOutlined, MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
 
 export default function OrderForm() {
   const editOrder = useSelector(selectOrderEdit)
@@ -19,10 +19,15 @@ export default function OrderForm() {
     }
   }, [dispatch, idOrder])
   
-  function setDishArr(idDishArr) {
-    return idDishArr.map((dish) => {
+  function setDishArr(DishesArr) {
+    return DishesArr.map((dish, index) => {
+      const numId = 0
+      const id = numId + index + 1
+
       return {
-        dishId: dish
+        id: id,
+        dishId: dish.dishId,
+        count: Number(dish.count),
       }
     })
   }
@@ -73,16 +78,51 @@ export default function OrderForm() {
           />
         </Form.Item>
 
-        <Form.Item
-          name="dishes"
-        >
-          <Select
-            className='select'
-            mode="multiple"
-            placeholder="Select dish"
-            options={initOptions.dish}
-          />
-        </Form.Item>
+        <Form.List name="dishes">
+          {(fields, { add, remove }) => (
+            <>
+              {fields.map(({ key, name, ...restField }) => (
+                <Space
+                  key={key}
+                  style={{
+                    display: 'flex',
+                    marginBottom: 8,
+                  }}
+                  align="baseline"
+                >
+                  <Form.Item
+                    {...restField}
+                    name={[name, 'dishId']}
+                  >
+                    <Select
+                      className='select'
+                      placeholder="Select dish"
+                      options={initOptions.dish}
+                    />
+                  </Form.Item>
+                  <Form.Item
+                    {...restField}
+                    name={[name, 'count']}
+                    rules={[
+                      {
+                        required: true,
+                        message: 'Please input dish count!',
+                      },
+                    ]}
+                  >
+                    <Input placeholder="Enter count of dish!" />
+                  </Form.Item>
+                  <MinusCircleOutlined onClick={() => remove(name)} />
+                </Space>
+              ))}
+              <Form.Item>
+                <Button type="dashed" onClick={() => add()} block icon={<PlusOutlined />}>
+                  Add dish
+                </Button>
+              </Form.Item>
+            </>
+          )}
+        </Form.List>
 
         <Form.Item>
           <Button type="primary" htmlType="submit">
