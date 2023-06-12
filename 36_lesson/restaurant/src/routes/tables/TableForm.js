@@ -50,7 +50,7 @@ export default function TableForm () {
           {
             validator: (_, value) => {
               const validateList = listInit.map(tableItem => {
-                return tableItem.number
+                return Number(tableItem.number)
               })
 
               if (validateList.includes(Number(value))) {
