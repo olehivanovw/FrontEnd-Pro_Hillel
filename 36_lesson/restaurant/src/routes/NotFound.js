@@ -1,10 +1,19 @@
-import { Typography } from "antd";
+import { Button, Result } from "antd";
+import { Link } from "react-router-dom";
 
 export default function NotFound () {
   return (
     <div>
-      <Typography.Title type="danger">Page Not Found</Typography.Title>
-      <Typography.Title type="danger">404</Typography.Title>
+      <Result
+        status="404"
+        title="404"
+        subTitle="Sorry, the page you visited does not exist."
+        extra={
+          <Button type="primary">
+            <Link to='/'>Back Home</Link>
+          </Button>
+        }
+      />
     </div>
   )
 }

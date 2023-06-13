@@ -8,7 +8,7 @@ import {
 } from "../actions/orderAction";
 
 const DEFAULT_LIST_ORDER = []
-const DEFAULT_LIST_ORDER_EDIT = { waiterId: '', tableId: '', dishes: [] }
+const DEFAULT_LIST_ORDER_EDIT = { waiterId: null, tableId: null, dishes: [] }
 
 const initialState = {
   listOrder: DEFAULT_LIST_ORDER,

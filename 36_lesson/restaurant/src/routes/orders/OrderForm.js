@@ -84,10 +84,7 @@ export default function OrderForm() {
               {fields.map(({ key, name, ...restField }) => (
                 <Space
                   key={key}
-                  style={{
-                    display: 'flex',
-                    marginBottom: 8,
-                  }}
+                  className='space-dishes'
                   align="baseline"
                 >
                   <Form.Item

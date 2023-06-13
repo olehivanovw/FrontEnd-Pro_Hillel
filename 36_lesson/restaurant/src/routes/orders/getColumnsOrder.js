@@ -7,8 +7,9 @@ export default function getColumnsOrder(dispatch, navigate) {
     navigate(`${order.id}/edit`)
   }
 
-  function onCloseBtnClick() {
-    console.log('WORK CLOSE')
+  function onCalculateBtnClick(order) {
+    dispatch(clearEditOrder())
+    navigate(`${order.id}/calculate`)
   }
 
   return [
@@ -36,7 +37,7 @@ export default function getColumnsOrder(dispatch, navigate) {
       render: (_, order) => (
         <Space>
           <Button type="primary" onClick={() => onEditBtnClick(order)}>Edit</Button>
-          <Button type="primary" onClick={() => onCloseBtnClick(order)}>Close</Button>
+          <Button type="primary" onClick={() => onCalculateBtnClick(order)}>Calculate</Button>
         </Space>
       )
     },

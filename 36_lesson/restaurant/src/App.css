@@ -43,3 +43,8 @@
   min-width: 240px;
   max-width: 600px;
 }
+
+.space-dishes {
+  display: flex;
+  margin-bottom: 8px;
+}
