@@ -53,7 +53,7 @@ export default function OrderTotal() {
       />
       <div>
         <Space>
-          <Button>
+          <Button type="primary">
             <Link to='/'>Back to Orders</Link>
           </Button>
         </Space>
