@@ -65,7 +65,7 @@ export default function TableForm () {
           },
         ]}
       >
-        <Input prefix={<FormOutlined />} placeholder="Enter table number" />
+        <Input prefix={<FormOutlined />} placeholder="Enter table number" type='number' />
       </Form.Item>
 
       <Form.Item>

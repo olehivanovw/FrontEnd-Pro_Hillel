@@ -84,7 +84,7 @@ export default function DishForm() {
           },
         ]}
       >
-        <Input prefix={<DollarOutlined />} placeholder="Enter dish price" />
+        <Input prefix={<DollarOutlined />} placeholder="Enter dish price" type='number' />
       </Form.Item>
 
       <Form.Item>
