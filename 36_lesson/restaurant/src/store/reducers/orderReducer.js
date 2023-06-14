@@ -1,6 +1,6 @@
 import {
   ACTION_SET_LIST_ORDER,
-  // ACTION_REMOVE_ORDER,
+  ACTION_REMOVE_ORDER,
   ACTION_CREATE_ORDER,
   ACTION_UPDATE_ORDER,
   ACTION_EDIT_ORDER,
@@ -18,7 +18,10 @@ const initialState = {
 export default function orderReducer(state=initialState, { type, payload }) {
   switch (type) {
     case ACTION_SET_LIST_ORDER: return { ...state, listOrder: payload }
+    case ACTION_REMOVE_ORDER:
+      const newList = state.listOrder.filter(orderItem => orderItem.id !== payload)
 
+      return { ...state, listOrder: newList }
     case ACTION_CREATE_ORDER: return {
       ...state,
       listOrder: [ ...state.listOrder, { ...payload }]

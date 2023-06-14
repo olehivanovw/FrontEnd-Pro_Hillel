@@ -15,16 +15,16 @@ export function remove(id) {
   return { type: ACTION_REMOVE_DISH, payload: id }
 }
 
-export function create(table) {
-  return { type: ACTION_CREATE_DISH, payload: table }
+export function create(dish) {
+  return { type: ACTION_CREATE_DISH, payload: dish }
 }
 
-export function update(table) {
-  return { type: ACTION_UPDATE_DISH, payload: table }
+export function update(dish) {
+  return { type: ACTION_UPDATE_DISH, payload: dish }
 }
 
-export function edit(table) {
-  return { type: ACTION_EDIT_DISH, payload: table }
+export function edit(dish) {
+  return { type: ACTION_EDIT_DISH, payload: dish }
 }
 
 export function clearEditDish() {
@@ -41,8 +41,8 @@ export function saveDish(dish) {
         })
     } else {
       DishAPI.createDish(dish)
-        .then((newTable) => {
-          dispatch(create(newTable))
+        .then((newDish) => {
+          dispatch(create(newDish))
         })
     }
   }
@@ -66,11 +66,11 @@ export function getServerOneDish(id) {
   }
 }
 
-export function removeDish(table) {
+export function removeDish(dish) {
   return (dispatch) => {
-    DishAPI.deleteDish(table.id)
+    DishAPI.deleteDish(dish.id)
       .then(() => {
-        dispatch(remove(table.id))
+        dispatch(remove(dish.id))
       })
   }
 }

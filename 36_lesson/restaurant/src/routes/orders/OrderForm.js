@@ -21,8 +21,7 @@ export default function OrderForm() {
   
   function setDishArr(DishesArr) {
     return DishesArr.map((dish, index) => {
-      const numId = 0
-      const id = numId + index + 1
+      const id = index + 1
 
       return {
         id: id,

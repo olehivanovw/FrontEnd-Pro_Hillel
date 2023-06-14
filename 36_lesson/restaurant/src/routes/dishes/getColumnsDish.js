@@ -16,21 +16,25 @@ export default function getColumnsDish(dispatch, navigate) {
       title: 'Name',
       dataIndex: 'name',
       key: 'name',
+      align: 'center',
     },
     {
       title: 'Description',
       dataIndex: 'description',
       key: 'description',
+      align: 'center',
     },
     {
       title: 'Price',
       dataIndex: 'price',
       key: 'price',
+      align: 'center',
     },
     {
       title: 'Action',
       dataIndex: 'Action',
       key: 'Action',
+      align: 'center',
       render: (_, dish) => (
         <Space>
           <Button onClick={() => onEditBtnClick(dish)}>Edit</Button>

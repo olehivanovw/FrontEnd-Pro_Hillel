@@ -1,11 +1,11 @@
 import { Routes, Route } from "react-router-dom";
 import { Layout, Menu, Typography } from 'antd';
+import { menu } from "./menu";
 import NotFound from "./routes/NotFound";
 import OrderRoutes from "./routes/orders/OrderRoutes";
 import TableRoutes from "./routes/tables/TableRoutes";
 import WaiterRoutes from "./routes/waiters/WaiterRoutes";
 import DishRoutes from "./routes/dishes/DishRoutes";
-import { menu } from "./menu";
 import './App.css';
 
 function App() {

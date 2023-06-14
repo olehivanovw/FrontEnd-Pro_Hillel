@@ -31,15 +31,6 @@ export function clearEditOrder() {
   return { type: ACTION_CLEAR_EDIT_ORDER }
 }
 
-// export function getServerOrders() {
-//   return (dispatch) => {
-//     OrderApi.getOrder()
-//       .then((newList) => {
-//         dispatch(setListOrder(newList))
-//       })
-//   }
-// }
-
 export function saveOrder(order) {
   return (dispatch) => {
     if (order.id) {
@@ -62,6 +53,15 @@ export function getServerOneOrder(id) {
     OrderApi.getOneOrder(id)
       .then((newOrder) => {
         dispatch(edit(newOrder))
+      })
+  }
+}
+
+export function removeOrder(order) {
+  return (dispatch) => {
+    OrderApi.deleteOrder(order.id)
+      .then(() => {
+        dispatch(remove(order.id))
       })
   }
 }
