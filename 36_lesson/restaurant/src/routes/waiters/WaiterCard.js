@@ -2,7 +2,7 @@ import { Button } from "antd";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { selectWaiterList } from "../../selectors";
-import { getServerWaiters } from "../../store/actions/waiterAction";
+import {clearEditWaiter, getServerWaiters} from "../../store/actions/waiterAction";
 import { useEffect } from "react";
 import WaiterCardItem from "../waiters/WaiterCardItem";
 
@@ -14,6 +14,10 @@ export default function WaiterCard() {
     dispatch(getServerWaiters())
   }, [dispatch])
 
+  function onAddBtnClick() {
+    dispatch(clearEditWaiter())
+  }
+
   const waiterListCard = listInit.map(waiter => (
     <WaiterCardItem
       key={waiter.id}
@@ -24,7 +28,7 @@ export default function WaiterCard() {
   return (
     <div>
       <div>
-        <Button type="primary" className='btn-add'>
+        <Button type="primary" className='btn-add' onClick={onAddBtnClick}>
           <Link to='/waiters/create'>Add Waiter</Link>
         </Button>
       </div>

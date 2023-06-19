@@ -5,6 +5,7 @@ import { selectCommonOrders } from "../../selectors";
 import { useEffect } from "react";
 import getCommonOrders from "../../store/actions/commonAction";
 import { Button, Table } from "antd";
+import { clearEditOrder } from "../../store/actions/orderAction";
 
 export default function OrderList() {
   const listInit = useSelector(selectCommonOrders)
@@ -16,14 +17,18 @@ export default function OrderList() {
     dispatch(getCommonOrders())
   }, [dispatch])
 
+  function onAddBtnClick() {
+    dispatch(clearEditOrder())
+  }
+
   return (
     <div>
       <div>
-        <Button type="primary" className='btn-add'>
+        <Button type="primary" className='btn-add' onClick={onAddBtnClick}>
           <Link to='/create'>Add Order</Link>
         </Button>
       </div>
-      <Table rowKey={'id'} columns={columns} dataSource={listInit} />
+      <Table rowKey={'id'} columns={columns} dataSource={listInit} className='table' />
     </div>
   )
 }

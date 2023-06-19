@@ -1,3 +1,7 @@
+.wrapper {
+  min-height: 100vh;
+}
+
 .header {
   height: 64px;
   line-height: 64px;
@@ -47,4 +51,9 @@
 .space-dishes {
   display: flex;
   margin-bottom: 8px;
+}
+
+.table {
+  max-width: 800px;
+  margin: 0 auto;
 }

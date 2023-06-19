@@ -10,7 +10,7 @@ import './App.css';
 
 function App() {
   return (
-    <Layout>
+    <Layout className='wrapper'>
       <Layout.Header className='header'>
         <Menu mode="horizontal" items={menu} />
       </Layout.Header>
