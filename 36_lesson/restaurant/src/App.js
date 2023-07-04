@@ -6,7 +6,7 @@ import OrderRoutes from "./routes/orders/OrderRoutes";
 import TableRoutes from "./routes/tables/TableRoutes";
 import WaiterRoutes from "./routes/waiters/WaiterRoutes";
 import DishRoutes from "./routes/dishes/DishRoutes";
-import './App.css';
+import './style/App.css';
 
 function App() {
   return (

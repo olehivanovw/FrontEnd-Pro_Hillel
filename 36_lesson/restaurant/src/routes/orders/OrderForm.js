@@ -1,10 +1,10 @@
-import { Button, Form, Input, Select, Space, Typography } from "antd";
+import { Button, Form, Input, Select, Space } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { selectCommonOptions, selectOrderEdit } from "../../selectors";
 import { getServerOneOrder, saveOrder } from "../../store/actions/orderAction";
-import { useEffect } from "react";
-import { LoadingOutlined, MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
+import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
+import FormWrapper from "../../extra/FormWrapper";
 
 export default function OrderForm() {
   const editOrder = useSelector(selectOrderEdit)
@@ -12,12 +12,6 @@ export default function OrderForm() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   let { idOrder } = useParams()
-
-  useEffect(() => {
-    if (idOrder) {
-      dispatch(getServerOneOrder(idOrder))
-    }
-  }, [dispatch, idOrder])
   
   function setDishArr(DishesArr) {
     return DishesArr.map((dish, index) => {
@@ -31,15 +25,6 @@ export default function OrderForm() {
     })
   }
 
-  if (idOrder && !editOrder?.id) {
-    return (
-      <div>
-        <Typography.Title strong>Loading edit order...</Typography.Title>
-        <Typography.Title strong><LoadingOutlined /></Typography.Title>
-      </div>
-    )
-  }
-
   function onFinish(value) {
     const orderData = { ...editOrder, ...value, 'dishes': setDishArr(value.dishes) }
 
@@ -49,83 +34,85 @@ export default function OrderForm() {
   }
 
   return (
-    <Space wrap>
-      <Form
-        initialValues={editOrder}
-        onFinish={onFinish}
-        autoComplete="off"
-        layout='horizontal'
-        className='form'
-      >
-        <Form.Item
-          name="waiterId"
+    <FormWrapper id={idOrder} editId={editOrder?.id} oneFetch={getServerOneOrder}>
+      <Space wrap>
+        <Form
+          initialValues={editOrder}
+          onFinish={onFinish}
+          autoComplete="off"
+          layout='horizontal'
+          className='form'
         >
-          <Select
-            className='select'
-            placeholder="Select waiter"
-            options={initOptions.waiter}
-          />
-        </Form.Item>
+          <Form.Item
+            name="waiterId"
+          >
+            <Select
+              className='select'
+              placeholder="Select waiter"
+              options={initOptions.waiter}
+            />
+          </Form.Item>
 
-        <Form.Item
-          name="tableId"
-        >
-          <Select
-            className='select'
-            placeholder="Select table"
-            options={initOptions.table}
-          />
-        </Form.Item>
+          <Form.Item
+            name="tableId"
+          >
+            <Select
+              className='select'
+              placeholder="Select table"
+              options={initOptions.table}
+            />
+          </Form.Item>
 
-        <Form.List name="dishes">
-          {(fields, { add, remove }) => (
-            <>
-              {fields.map(({ key, name, ...restField }) => (
-                <Space
-                  key={key}
-                  className='space-dishes'
-                  align="baseline"
-                >
-                  <Form.Item
-                    {...restField}
-                    name={[name, 'dishId']}
+          <Form.List name="dishes">
+            {(fields, { add, remove }) => (
+              <>
+                {fields.map(({ key, name, ...restField }) => (
+                  <Space
+                    key={key}
+                    className='space-dishes'
+                    align="baseline"
                   >
-                    <Select
-                      className='select'
-                      placeholder="Select dish"
-                      options={initOptions.dish}
-                    />
-                  </Form.Item>
-                  <Form.Item
-                    {...restField}
-                    name={[name, 'count']}
-                    rules={[
-                      {
-                        required: true,
-                        message: 'Please input dish count!',
-                      },
-                    ]}
-                  >
-                    <Input placeholder="Enter count of dish!" />
-                  </Form.Item>
-                  <MinusCircleOutlined onClick={() => remove(name)} />
-                </Space>
-              ))}
-              <Form.Item>
-                <Button type="dashed" onClick={() => add()} block icon={<PlusOutlined />}>
-                  Add dish
-                </Button>
-              </Form.Item>
-            </>
-          )}
-        </Form.List>
+                    <Form.Item
+                      {...restField}
+                      name={[name, 'dishId']}
+                    >
+                      <Select
+                        className='select'
+                        placeholder="Select dish"
+                        options={initOptions.dish}
+                      />
+                    </Form.Item>
+                    <Form.Item
+                      {...restField}
+                      name={[name, 'count']}
+                      rules={[
+                        {
+                          required: true,
+                          message: 'Please input dish count!',
+                        },
+                      ]}
+                    >
+                      <Input placeholder="Enter count of dish!" />
+                    </Form.Item>
+                    <MinusCircleOutlined onClick={() => remove(name)} />
+                  </Space>
+                ))}
+                <Form.Item>
+                  <Button type="dashed" onClick={() => add()} block icon={<PlusOutlined />}>
+                    Add dish
+                  </Button>
+                </Form.Item>
+              </>
+            )}
+          </Form.List>
 
-        <Form.Item>
-          <Button type="primary" htmlType="submit">
-            Submit
-          </Button>
-        </Form.Item>
-      </Form>
-    </Space>
+          <Form.Item>
+            <Button type="primary" htmlType="submit">
+              Submit
+            </Button>
+          </Form.Item>
+        </Form>
+      </Space>
+    </FormWrapper>
   )
 }
