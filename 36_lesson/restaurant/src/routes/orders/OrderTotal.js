@@ -1,10 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
 import { selectDishList, selectOrderEdit } from "../../selectors";
 import { Link, useParams } from "react-router-dom";
-import { getServerOneOrder } from "../../store/actions/orderAction";
+import { getServerOneOrder, removeOrder } from "../../store/actions/orderAction";
 import { useEffect } from "react";
-import { Button, Result, Space, Typography } from "antd";
-import { LoadingOutlined } from "@ant-design/icons";
+import { Button, Result, Space, Spin, Typography } from "antd";
 
 export default function OrderTotal() {
   const listInitDish = useSelector(selectDishList)
@@ -20,14 +19,15 @@ export default function OrderTotal() {
 
   if (idOrder && !editOrder?.id) {
     return (
-      <div>
-        <Typography.Title strong>Loading sum...</Typography.Title>
-        <Typography.Title strong><LoadingOutlined /></Typography.Title>
-      </div>
+      <Space direction="vertical" className='spin'>
+        <Spin tip="Loading" size="large">
+          <div className="content" />
+        </Spin>
+      </Space>
     )
   }
 
-  function Bill(dish, order) {
+  function bill(dish, order) {
     const dishList = dish.reduce((acc, currDish) => {
       acc[currDish.id] = currDish
 
@@ -44,17 +44,24 @@ export default function OrderTotal() {
     return result.reduce((acc, curr) => acc + curr)
   }
 
+  function onDeleteBtnClick(order) {
+    dispatch(removeOrder(order))
+  }
+
   return (
     <div>
       <Result
         status="success"
-        title={<Typography.Title>{Bill(listInitDish, editOrder)} $</Typography.Title>}
+        title={<Typography.Title>{bill(listInitDish, editOrder)} $</Typography.Title>}
         subTitle='The total amount of the check: the waiters tip is included in the total bill!'
       />
       <div>
         <Space>
           <Button type="primary">
             <Link to='/'>Back to Orders</Link>
+          </Button>
+          <Button type="primary" danger onClick={() => onDeleteBtnClick(editOrder)}>
+            <Link to='/'>Delete</Link>
           </Button>
         </Space>
       </div>

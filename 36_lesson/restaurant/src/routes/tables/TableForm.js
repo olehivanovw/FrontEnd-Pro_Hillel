@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectTableEdit, selectTableList } from "../../selectors";
 import { useNavigate, useParams } from "react-router-dom";
 import { getServerOneTable, saveTable } from "../../store/actions/tableAction";
+import { rulesForm } from "../../extra/rulesForm";
 import FormWrapper from "../../extra/FormWrapper";
 
 export default function TableForm () {
@@ -45,10 +46,7 @@ export default function TableForm () {
                 return Promise.resolve();
               },
             },
-            {
-              required: true,
-              message: 'Please input table number!',
-            },
+            rulesForm.table,
           ]}
         >
           <Input prefix={<FormOutlined />} placeholder="Enter table number" type='number' className='input' />

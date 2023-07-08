@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { selectCommonOptions, selectOrderEdit } from "../../selectors";
 import { getServerOneOrder, saveOrder } from "../../store/actions/orderAction";
 import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
+import { rulesForm } from "../../extra/rulesForm";
 import FormWrapper from "../../extra/FormWrapper";
 
 export default function OrderForm() {
@@ -85,12 +86,7 @@ export default function OrderForm() {
                     <Form.Item
                       {...restField}
                       name={[name, 'count']}
-                      rules={[
-                        {
-                          required: true,
-                          message: 'Please input dish count!',
-                        },
-                      ]}
+                      rules={[rulesForm.orderCount]}
                     >
                       <Input placeholder="Enter count of dish!" />
                     </Form.Item>
