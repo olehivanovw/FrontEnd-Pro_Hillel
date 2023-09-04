@@ -1,5 +1,5 @@
 export default class DishAPI {
-  static URL = 'https://testapi-sywb.onrender.com//dishes/'
+  static URL = 'https://testapi-sywb.onrender.com/dishes/'
 
   static request(url = '', method = '', body, errorMessage) {
     return fetch(DishAPI.URL + url, {
