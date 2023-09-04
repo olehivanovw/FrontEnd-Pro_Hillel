@@ -1,5 +1,5 @@
 export default class OrderApi {
-  static URL = 'https://mock-api-5678.nw.r.appspot.com/orders/'
+  static URL = 'https://testapi-sywb.onrender.com/orders/'
 
   static request(url = '', method = '', body, errorMessage) {
     return fetch(OrderApi.URL + url, {

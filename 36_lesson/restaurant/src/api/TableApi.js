@@ -1,5 +1,5 @@
 export default class TableAPI {
-  static URL = 'https://mock-api-5678.nw.r.appspot.com/tables/'
+  static URL = 'https://testapi-sywb.onrender.com/tables/'
 
   static request(url = '', method = '', body, errorMessage) {
     return fetch(TableAPI.URL + url, {
